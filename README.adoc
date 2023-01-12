@@ -1,4 +1,4 @@
-= Spring Batch 5.0 Task 3.0 Boot 3.0 Test Data generator
+= Spring Batch 4.x Task 2.x Boot 2.7.x Test Data generator
 
 The tests create the DB load files for Spring Batch 4.x and Spring Cloud Task 2.x tables for a set of scenarios.
 
@@ -13,5 +13,6 @@ The tests create the DB load files for Spring Batch 4.x and Spring Cloud Task 2.
 mvn clean package
 ----
 
-If you want to change the prefix for the tables open the `src/test/resources/prefix.csv` file ane replace the word `default` with your prefix.
+If you want to change the prefix for the tables open the `src/test/resources/batchexportconfig.csv` file ane replace the word `default` with your prefix.
 THis will change all the prefixes for the Task and Batch tables to the specified value.  For example if you set the value in `batchexportconfig.csv` to `V3` then `TASK_EXECUTION`  would become `V3_EXECUTION`.
+
