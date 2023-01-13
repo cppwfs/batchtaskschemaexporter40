@@ -8,7 +8,7 @@ public class SingleJobMultiStepTest extends AbstractBatchExport {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/batchexportconfig.csv")
-    void testJobExecution(String prefix, String databaseName) throws Exception {
-        generateImportFile(BatchSingleJobMultiStepApplication.class, "singleJobMultiStep.load", prefix, databaseName);
+    void testJobExecution(String prefix, String databaseType, long sequenceStartVal) throws Exception {
+        generateImportFile(BatchSingleJobMultiStepApplication.class, "singleJobMultiStep.load", prefix, databaseType, sequenceStartVal);
     }
 }
