@@ -1,0 +1,74 @@
+insert into BATCH_JOB_INSTANCE (JOB_INSTANCE_ID, JOB_KEY, JOB_NAME, VERSION) values ('9001','d41d8cd98f00b204e9800998ecf8427e','job1','0');
+insert into BATCH_JOB_EXECUTION (CREATE_TIME, END_TIME, EXIT_CODE, EXIT_MESSAGE, JOB_CONFIGURATION_LOCATION, JOB_EXECUTION_ID, JOB_INSTANCE_ID, LAST_UPDATED, START_TIME, STATUS, VERSION) values ('2023-01-16 09:18:23.612','2023-01-16 09:18:23.779','FAILED','java.lang.IllegalStateException: WHOOPS
+	at io.spring.batchschema.singlejobmultistepfailedsecondstep.TestSingleJobMultiStepConfiguration$2.execute(TestSingleJobMultiStepConfiguration.java:45)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:407)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:331)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:273)
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:82)
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:375)
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:215)
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:145)
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:258)
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:208)
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:152)
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:413)
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:136)
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:320)
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher$1.run(SimpleJobLauncher.java:149)
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50)
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher.run(SimpleJobLauncher.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proce',NULL,'9001','9001','2023-01-16 09:18:23.78','2023-01-16 09:18:23.635','FAILED','2');
+insert into BATCH_STEP_EXECUTION (COMMIT_COUNT, END_TIME, EXIT_CODE, EXIT_MESSAGE, FILTER_COUNT, JOB_EXECUTION_ID, LAST_UPDATED, PROCESS_SKIP_COUNT, READ_COUNT, READ_SKIP_COUNT, ROLLBACK_COUNT, START_TIME, STATUS, STEP_EXECUTION_ID, STEP_NAME, VERSION, WRITE_COUNT, WRITE_SKIP_COUNT) values ('1','2023-01-16 09:18:23.712','COMPLETED','','0','9001','2023-01-16 09:18:23.715','0','0','0','0','2023-01-16 09:18:23.671','COMPLETED','9001','job1step1','3','0','0');
+insert into BATCH_STEP_EXECUTION (COMMIT_COUNT, END_TIME, EXIT_CODE, EXIT_MESSAGE, FILTER_COUNT, JOB_EXECUTION_ID, LAST_UPDATED, PROCESS_SKIP_COUNT, READ_COUNT, READ_SKIP_COUNT, ROLLBACK_COUNT, START_TIME, STATUS, STEP_EXECUTION_ID, STEP_NAME, VERSION, WRITE_COUNT, WRITE_SKIP_COUNT) values ('0','2023-01-16 09:18:23.77','FAILED','java.lang.IllegalStateException: WHOOPS
+	at io.spring.batchschema.singlejobmultistepfailedsecondstep.TestSingleJobMultiStepConfiguration$2.execute(TestSingleJobMultiStepConfiguration.java:45)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:407)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:331)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:273)
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:82)
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:375)
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:215)
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:145)
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:258)
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:208)
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:152)
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:413)
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:136)
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:320)
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher$1.run(SimpleJobLauncher.java:149)
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50)
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher.run(SimpleJobLauncher.java:140)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proce','0','9001','2023-01-16 09:18:23.77','0','0','0','1','2023-01-16 09:18:23.746','FAILED','9002','job1step2','2','0','0');
+insert into BATCH_JOB_EXECUTION_CONTEXT (JOB_EXECUTION_ID, SERIALIZED_CONTEXT, SHORT_CONTEXT)values ('9001',NULL,'{"@class":"java.util.HashMap"}');
+insert into BATCH_STEP_EXECUTION_CONTEXT (SERIALIZED_CONTEXT, SHORT_CONTEXT, STEP_EXECUTION_ID) values (NULL,'{"@class":"java.util.HashMap","batch.taskletType":"io.spring.batchschema.singlejobmultistepfailedsecondstep.TestSingleJobMultiStepConfiguration$1","batch.stepType":"org.springframework.batch.core.step.tasklet.TaskletStep"}','9001');
+insert into BATCH_STEP_EXECUTION_CONTEXT (SERIALIZED_CONTEXT, SHORT_CONTEXT, STEP_EXECUTION_ID) values (NULL,'{"@class":"java.util.HashMap","batch.taskletType":"io.spring.batchschema.singlejobmultistepfailedsecondstep.TestSingleJobMultiStepConfiguration$2","batch.stepType":"org.springframework.batch.core.step.tasklet.TaskletStep"}','9002');
+insert into TASK_EXECUTION (END_TIME, ERROR_MESSAGE, EXIT_CODE, EXIT_MESSAGE, EXTERNAL_EXECUTION_ID, LAST_UPDATED, PARENT_EXECUTION_ID, START_TIME, TASK_EXECUTION_ID, TASK_NAME)values ('2023-01-16 09:18:23.0',NULL,'0',NULL,NULL,'2023-01-16 09:18:23.0',NULL,'2023-01-16 09:18:23.0','9001','application');
+insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values ('9001','--logging.level.org.springframework.cloud.task=DEBUG');
+insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values ('9001','--spring.datasource.password=test');
+insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values ('9001','--spring.datasource.username=test');
+insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values ('9001','--spring.datasource.url=jdbc:mariadb://localhost:51174/test');
+insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values ('9001','--spring.datasource.driverClassName=org.mariadb.jdbc.Driver');
+insert into TASK_TASK_BATCH (TASK_EXECUTION_ID, JOB_EXECUTION_ID) values ('9001','9001');
+
+
+truncate table BATCH_JOB_SEQ;
+INSERT INTO BATCH_JOB_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
+truncate table BATCH_JOB_EXECUTION_SEQ;
+INSERT INTO BATCH_JOB_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
+truncate table BATCH_STEP_EXECUTION_SEQ;
+INSERT INTO BATCH_STEP_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
+truncate table TASK_SEQ
+;INSERT INTO TASK_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
