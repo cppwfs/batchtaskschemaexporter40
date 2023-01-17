@@ -248,11 +248,11 @@ public abstract class AbstractBatchExport {
         return "'" + value + "'";
     }
 
-    protected void generateImportFile(Class clazz, String importFileName, String prefix, String databaseType, long startValue ) throws Exception {
+    protected void generateImportFile(Class clazz, String importFileName, String prefix, String databaseType, long startValue) throws Exception {
         generateImportFile(clazz, importFileName, prefix, databaseType, null, startValue);
     }
 
-    protected void generateImportFile(Class clazz, String importFileName, String prefix, String databaseType,  String param, long startValue) throws Exception {
+    protected void generateImportFile(Class clazz, String importFileName, String prefix, String databaseType, String param, long startValue) throws Exception {
         setTestSequenceToStartValue(startValue);
         if (param != null) {
             try {
@@ -263,17 +263,20 @@ public abstract class AbstractBatchExport {
                         "--spring.datasource.url=" + mariaDB.getJdbcUrl(),
                         "--spring.datasource.driverClassName=org.mariadb.jdbc.Driver",
                         param);
-            }
-            catch (Exception exception) {
+            } catch (Exception exception) {
                 System.out.println("Application failed to run.   This may have been by design.  Verify with test.");
             }
         } else {
-            SpringApplication.run(clazz,
-                    "--logging.level.org.springframework.cloud.task=DEBUG",
-                    "--spring.datasource.password=" + mariaDB.getPassword(),
-                    "--spring.datasource.username=" + mariaDB.getUsername(),
-                    "--spring.datasource.url=" + mariaDB.getJdbcUrl(),
-                    "--spring.datasource.driverClassName=org.mariadb.jdbc.Driver");
+            try {
+                SpringApplication.run(clazz,
+                        "--logging.level.org.springframework.cloud.task=DEBUG",
+                        "--spring.datasource.password=" + mariaDB.getPassword(),
+                        "--spring.datasource.username=" + mariaDB.getUsername(),
+                        "--spring.datasource.url=" + mariaDB.getJdbcUrl(),
+                        "--spring.datasource.driverClassName=org.mariadb.jdbc.Driver");
+            } catch (Exception exception) {
+                System.out.println("Application failed to run.   This may have been by design.  Verify with test.");
+            }
         }
         configureImportFile(importFileName, prefix, databaseType);
     }
@@ -281,41 +284,43 @@ public abstract class AbstractBatchExport {
     private void setTestSequenceToStartValue(long startValue) {
         JdbcTemplate template = new JdbcTemplate(dataSource);
         template.execute("truncate table " + "BATCH_JOB_SEQ;");
-        template.execute( "INSERT INTO " + "BATCH_JOB_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);");
+        template.execute("INSERT INTO " + "BATCH_JOB_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);");
         template.execute("truncate table " + "BATCH_JOB_EXECUTION_SEQ;");
-        template.execute( "INSERT INTO " + "BATCH_JOB_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);");
+        template.execute("INSERT INTO " + "BATCH_JOB_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);");
         template.execute("truncate table " + "BATCH_STEP_EXECUTION_SEQ;");
-        template.execute( "INSERT INTO " + "BATCH_STEP_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);");
+        template.execute("INSERT INTO " + "BATCH_STEP_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);");
         template.execute("truncate table " + "TASK_SEQ;");
-        template.execute( "INSERT INTO " + "TASK_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);");
+        template.execute("INSERT INTO " + "TASK_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);");
 
     }
 
     private void setSequences(BufferedWriter writer, long startIndex, String prefix, String databaseType) throws Exception {
         String batchPrefix = (prefix.equals("default") ? "BATCH" : prefix);
         String taskPrefix = (prefix.equals("default") ? "TASK" : prefix);
-        System.out.println("******** " +  dataSource.getConnection().getMetaData().getDatabaseProductName());
-        if(databaseType.equals("POSTGRESQL")) {
+        System.out.println("******** " + dataSource.getConnection().getMetaData().getDatabaseProductName());
+        if (databaseType.equals("POSTGRESQL")) {
             setPostgresSequences(writer, startIndex, taskPrefix, batchPrefix);
         }
-        if(databaseType.equals("MYSQL") || databaseType.equals("MARIADB")) {
+        if (databaseType.equals("MYSQL") || databaseType.equals("MARIADB")) {
             setMariadbSequences(writer, startIndex, taskPrefix, batchPrefix);
         }
     }
+
     private void setPostgresSequences(BufferedWriter writer, long startValue, String taskPrefix, String batchPrefix) throws Exception {
         writer.write("\n\nALTER SEQUENCE " + taskPrefix + "_SEQ START WITH " + startValue + "; \n");
         writer.write("ALTER SEQUENCE " + batchPrefix + "_JOB_SEQ START WITH " + startValue + "; \n");
         writer.write("ALTER SEQUENCE " + batchPrefix + "_STEP_EXECUTION_SEQ START WITH " + startValue + "; \n");
         writer.write("ALTER SEQUENCE " + batchPrefix + "_JOB_EXECUTION_SEQ START WITH " + startValue + "; \n");
     }
+
     private void setMariadbSequences(BufferedWriter writer, long startValue, String taskPrefix, String batchPrefix) throws Exception {
-        writer.write("\n\ntruncate table " + batchPrefix +"_JOB_SEQ;\n");
-        writer.write( "INSERT INTO " + batchPrefix +"_JOB_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);\n");
-        writer.write("truncate table " + batchPrefix +"_JOB_EXECUTION_SEQ;\n");
-        writer.write( "INSERT INTO " + batchPrefix +"_JOB_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);\n");
-        writer.write("truncate table " + batchPrefix +"_STEP_EXECUTION_SEQ;\n");
-        writer.write( "INSERT INTO " + batchPrefix +"_STEP_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);\n");
+        writer.write("\n\ntruncate table " + batchPrefix + "_JOB_SEQ;\n");
+        writer.write("INSERT INTO " + batchPrefix + "_JOB_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);\n");
+        writer.write("truncate table " + batchPrefix + "_JOB_EXECUTION_SEQ;\n");
+        writer.write("INSERT INTO " + batchPrefix + "_JOB_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);\n");
+        writer.write("truncate table " + batchPrefix + "_STEP_EXECUTION_SEQ;\n");
+        writer.write("INSERT INTO " + batchPrefix + "_STEP_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);\n");
         writer.write("truncate table " + taskPrefix + "_SEQ\n;");
-        writer.write( "INSERT INTO " + taskPrefix + "_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);\n");
+        writer.write("INSERT INTO " + taskPrefix + "_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);\n");
     }
 }
