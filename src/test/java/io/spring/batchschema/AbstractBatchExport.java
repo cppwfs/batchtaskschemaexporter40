@@ -253,7 +253,7 @@ public abstract class AbstractBatchExport {
     }
 
     protected void generateImportFile(Class clazz, String importFileName, String prefix, String databaseType,  String param, long startValue) throws Exception {
-        setTestSequenceToStartValue(9000);
+        setTestSequenceToStartValue(startValue);
         if (param != null) {
             try {
                 SpringApplication.run(clazz,
