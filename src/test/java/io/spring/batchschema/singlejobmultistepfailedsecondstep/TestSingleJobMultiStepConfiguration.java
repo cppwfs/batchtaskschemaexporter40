@@ -27,7 +27,7 @@ public class TestSingleJobMultiStepConfiguration {
 
     @Bean
     public Job job(JobRepository jobRepository) {
-        return this.jobBuilderFactory.get("job1")
+        return this.jobBuilderFactory.get("job1SingleJobMultiStepFailedSecond")
                 .start(this.stepBuilderFactory.get("job1multistepwithfailedstep")
                         .tasklet(new Tasklet() {
                             @Override
