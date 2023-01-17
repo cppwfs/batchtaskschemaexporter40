@@ -28,7 +28,7 @@ public class TestSingleJobMultiStepConfiguration {
     @Bean
     public Job job(JobRepository jobRepository) {
         return this.jobBuilderFactory.get("job1")
-                .start(this.stepBuilderFactory.get("job1step1")
+                .start(this.stepBuilderFactory.get("job1multistepwithfailedstep")
                         .tasklet(new Tasklet() {
                             @Override
                             public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {

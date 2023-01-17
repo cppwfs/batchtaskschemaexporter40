@@ -27,8 +27,8 @@ public class TestSingleConfiguration {
 
     @Bean
     public Job job(JobRepository jobRepository) {
-        return this.jobBuilderFactory.get("job1")
-                .start(this.stepBuilderFactory.get("job1step1")
+        return this.jobBuilderFactory.get("jobsinglestep")
+                .start(this.stepBuilderFactory.get("job1step1singlestep")
                         .tasklet(new Tasklet() {
                             @Override
                             public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
