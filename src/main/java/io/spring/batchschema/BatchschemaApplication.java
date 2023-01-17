@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Batchschema30Application {
+public class BatchschemaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Batchschema30Application.class, args);
+		SpringApplication.run(BatchschemaApplication.class, args);
 	}
 
 }
