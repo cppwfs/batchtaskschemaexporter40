@@ -81,8 +81,8 @@ public abstract class AbstractBatchExport {
                     "'" + row.get("EXIT_CODE") + "'," +
                     "'" + row.get("EXIT_MESSAGE") + "'," +
                     replaceNullWithNull(row.get("JOB_CONFIGURATION_LOCATION")) + "," +
-                    "'" + row.get("JOB_EXECUTION_ID") + "'," +
-                    "'" + row.get("JOB_INSTANCE_ID") + "'," +
+                    row.get("JOB_EXECUTION_ID") + "," +
+                    row.get("JOB_INSTANCE_ID") + "," +
                     "'" + row.get("LAST_UPDATED") + "'," +
                     "'" + row.get("START_TIME") + "'," +
                     "'" + row.get("STATUS") + "'," +
@@ -98,7 +98,7 @@ public abstract class AbstractBatchExport {
                 "FROM BATCH_JOB_INSTANCE");
         for (Map<String, Object> row : result) {
             String batchInstance = "insert into " + prefix + "_JOB_INSTANCE (JOB_INSTANCE_ID, JOB_KEY, JOB_NAME, VERSION) " +
-                    "values ('" + row.get("JOB_INSTANCE_ID") + "'," +
+                    "values (" + row.get("JOB_INSTANCE_ID") + "," +
                     "'" + row.get("JOB_KEY") + "'," +
                     "'" + row.get("JOB_NAME") + "'," +
                     "'" + row.get("VERSION") + "'" +
@@ -118,24 +118,24 @@ public abstract class AbstractBatchExport {
                     "EXIT_MESSAGE, FILTER_COUNT, JOB_EXECUTION_ID, LAST_UPDATED, PROCESS_SKIP_COUNT, READ_COUNT, " +
                     "READ_SKIP_COUNT, ROLLBACK_COUNT, START_TIME, STATUS, STEP_EXECUTION_ID, STEP_NAME, " +
                     "VERSION, WRITE_COUNT, WRITE_SKIP_COUNT) " +
-                    "values ('" + row.get("COMMIT_COUNT") + "'," +
+                    "values (" + row.get("COMMIT_COUNT") + "," +
                     "'" + row.get("END_TIME") + "'," +
                     "'" + row.get("EXIT_CODE") + "'," +
                     "'" + row.get("EXIT_MESSAGE") + "'," +
-                    "'" + row.get("FILTER_COUNT") + "'" + "," +
-                    "'" + row.get("JOB_EXECUTION_ID") + "'," +
+                    row.get("FILTER_COUNT") + "," +
+                    row.get("JOB_EXECUTION_ID") + "," +
                     "'" + row.get("LAST_UPDATED") + "'," +
-                    "'" + row.get("PROCESS_SKIP_COUNT") + "'," +
-                    "'" + row.get("READ_COUNT") + "'," +
-                    "'" + row.get("READ_SKIP_COUNT") + "'," +
-                    "'" + row.get("ROLLBACK_COUNT") + "'," +
+                    row.get("PROCESS_SKIP_COUNT") + "," +
+                    row.get("READ_COUNT") + "," +
+                    row.get("READ_SKIP_COUNT") + "," +
+                    row.get("ROLLBACK_COUNT") + "," +
                     "'" + row.get("START_TIME") + "'," +
                     "'" + row.get("STATUS") + "'," +
-                    "'" + row.get("STEP_EXECUTION_ID") + "'," +
+                    row.get("STEP_EXECUTION_ID") + "," +
                     "'" + row.get("STEP_NAME") + "'," +
                     "'" + row.get("VERSION") + "'," +
-                    "'" + row.get("WRITE_COUNT") + "'," +
-                    "'" + row.get("WRITE_SKIP_COUNT") + "'" +
+                    row.get("WRITE_COUNT") + "," +
+                    row.get("WRITE_SKIP_COUNT") +
                     ");\n";
             System.out.println(batchStepExecution);
             writer.write(batchStepExecution);
@@ -147,7 +147,7 @@ public abstract class AbstractBatchExport {
                 "FROM BATCH_JOB_EXECUTION_CONTEXT");
         for (Map<String, Object> row : result) {
             String batchExecutionContextInstance = "insert into " + prefix + "_JOB_EXECUTION_CONTEXT (JOB_EXECUTION_ID, SERIALIZED_CONTEXT, SHORT_CONTEXT)" +
-                    "values ('" + row.get("JOB_EXECUTION_ID") + "'," +
+                    "values (" + row.get("JOB_EXECUTION_ID") + "," +
                     replaceNullWithNull(row.get("SERIALIZED_CONTEXT")) + "," +
                     "'" + row.get("SHORT_CONTEXT") + "'" +
                     ");\n";
@@ -162,7 +162,7 @@ public abstract class AbstractBatchExport {
         for (Map<String, Object> row : result) {
             String batchExecutionWithParams = "insert into " + prefix + "_JOB_EXECUTION_PARAMS (JOB_EXECUTION_ID, TYPE_CD, KEY_NAME, " +
                     "STRING_VAL, DATE_VAL, LONG_VAL, DOUBLE_VAL, IDENTIFYING) " +
-                    "values ('" + row.get("JOB_EXECUTION_ID") + "'," +
+                    "values (" + row.get("JOB_EXECUTION_ID") + "," +
                     "'" + row.get("TYPE_CD") + "'," +
                     "'" + row.get("KEY_NAME") + "'," +
                     "'" + row.get("STRING_VAL") + "'," +
@@ -192,7 +192,7 @@ public abstract class AbstractBatchExport {
                     "'" + row.get("LAST_UPDATED") + "'" + "," +
                     replaceNullWithNull(row.get("PARENT_EXECUTION_ID")) + "," +
                     "'" + row.get("START_TIME") + "'" + "," +
-                    "'" + row.get("TASK_EXECUTION_ID") + "'" + "," +
+                    row.get("TASK_EXECUTION_ID") + "," +
                     "'" + row.get("TASK_NAME") + "'" +
                     ");\n";
             System.out.println(taskExecutionInsert);
@@ -205,7 +205,7 @@ public abstract class AbstractBatchExport {
                 "FROM TASK_EXECUTION_PARAMS");
         for (Map<String, Object> row : result) {
             String taskExecutionParamInsert = "insert into " + prefix + "_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM)" +
-                    " values ('" + row.get("TASK_EXECUTION_ID") + "'," +
+                    " values (" + row.get("TASK_EXECUTION_ID") + "," +
                     "'" + row.get("TASK_PARAM") + "'" +
                     ");\n";
             System.out.println(taskExecutionParamInsert);
@@ -218,8 +218,8 @@ public abstract class AbstractBatchExport {
                 "FROM TASK_TASK_BATCH");
         for (Map<String, Object> row : result) {
             String taskBatchInsert = "insert into " + prefix + "_TASK_BATCH (TASK_EXECUTION_ID, JOB_EXECUTION_ID)" +
-                    " values ('" + row.get("TASK_EXECUTION_ID") + "'," +
-                    "'" + row.get("JOB_EXECUTION_ID") + "'" +
+                    " values (" + row.get("TASK_EXECUTION_ID") + "," +
+                    row.get("JOB_EXECUTION_ID") + "" +
                     ");\n";
             System.out.println(taskBatchInsert);
             writer.write(taskBatchInsert);
@@ -234,7 +234,7 @@ public abstract class AbstractBatchExport {
                     "SHORT_CONTEXT, STEP_EXECUTION_ID) values (" +
                     replaceNullWithNull(row.get("SERIALIZED_CONTEXT")) + "," +
                     "'" + row.get("SHORT_CONTEXT") + "'," +
-                    "'" + row.get("STEP_EXECUTION_ID") + "'" +
+                    row.get("STEP_EXECUTION_ID") +
                     ");\n";
             System.out.println(batchStepExecutionContext);
             writer.write(batchStepExecutionContext);
