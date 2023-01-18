@@ -248,12 +248,13 @@ public abstract class AbstractBatchExport {
         return "'" + value + "'";
     }
 
-    protected void generateImportFile(Class clazz, String importFileName, String prefix, String databaseType, long startValue) throws Exception {
-        generateImportFile(clazz, importFileName, prefix, databaseType, null, startValue);
+    protected void generateImportFile(Class clazz, String importFileName) throws Exception {
+        generateImportFile(clazz, importFileName, null);
     }
 
-    protected void generateImportFile(Class clazz, String importFileName, String prefix, String databaseType, String param, long startValue) throws Exception {
-        setTestSequenceToStartValue(startValue);
+    protected void generateImportFile(Class clazz, String importFileName, String param) throws Exception {
+        setTestSequenceToStartValue(getSequenceStart());
+
         if (param != null) {
             try {
                 SpringApplication.run(clazz,
@@ -278,7 +279,7 @@ public abstract class AbstractBatchExport {
                 System.out.println("Application failed to run.   This may have been by design.  Verify with test.");
             }
         }
-        configureImportFile(importFileName, prefix, databaseType, startValue);
+        configureImportFile(importFileName, getPrefix(), getDatabaseType(), getSequenceStart());
     }
 
     private void setTestSequenceToStartValue(long startValue) {
@@ -307,6 +308,7 @@ public abstract class AbstractBatchExport {
     }
 
     private void setPostgresSequences(BufferedWriter writer, long startValue, String taskPrefix, String batchPrefix) throws Exception {
+        startValue = startValue + 1;
         writer.write("\n\nALTER SEQUENCE " + taskPrefix + "_SEQ START WITH " + startValue + "; \n");
         writer.write("ALTER SEQUENCE " + batchPrefix + "_JOB_SEQ START WITH " + startValue + "; \n");
         writer.write("ALTER SEQUENCE " + batchPrefix + "_STEP_EXECUTION_SEQ START WITH " + startValue + "; \n");
@@ -323,5 +325,32 @@ public abstract class AbstractBatchExport {
         writer.write("INSERT INTO " + batchPrefix + "_STEP_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);\n");
         writer.write("truncate table " + taskPrefix + "_SEQ\n;");
         writer.write("INSERT INTO " + taskPrefix + "_SEQ (ID, UNIQUE_KEY) VALUES(" + startValue + ", 0);\n");
+    }
+
+    /**
+     * Retrieve the current Sequence Value from the environment variable sequenceval or the default which is 9000.
+     * @return the sequence value.
+     */
+    private long getSequenceStart() {
+        String sequenceVal = System.getenv().get("sequenceval");
+        if (sequenceVal == null) {
+            sequenceVal = "9000";
+        }
+        return Long.valueOf(sequenceVal);
+    }
+    private String getPrefix() {
+        String prefixVal = System.getenv().get("prefixval");
+        if (prefixVal == null) {
+            prefixVal = "default";
+        }
+        return prefixVal;
+    }
+
+    private String getDatabaseType() {
+        String databaseTypeVal = System.getenv().get("databasetypeval");
+        if (databaseTypeVal == null) {
+            databaseTypeVal = "MARIADB";
+        }
+        return databaseTypeVal;
     }
 }
