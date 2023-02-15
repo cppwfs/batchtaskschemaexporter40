@@ -1,4 +1,4 @@
-insert into TASK_EXECUTION (END_TIME, ERROR_MESSAGE, EXIT_CODE, EXIT_MESSAGE, EXTERNAL_EXECUTION_ID, LAST_UPDATED, PARENT_EXECUTION_ID, START_TIME, TASK_EXECUTION_ID, TASK_NAME)values ('2023-01-18 18:08:28.0','java.lang.IllegalStateException: Failed to execute ApplicationRunner
+insert into V4_EXECUTION (END_TIME, ERROR_MESSAGE, EXIT_CODE, EXIT_MESSAGE, EXTERNAL_EXECUTION_ID, LAST_UPDATED, PARENT_EXECUTION_ID, START_TIME, TASK_EXECUTION_ID, TASK_NAME)values ('2023-02-15 17:03:44.0','java.lang.IllegalStateException: Failed to execute ApplicationRunner
 	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:762)
 	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:749)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
@@ -23,19 +23,19 @@ insert into TASK_EXECUTION (END_TIME, ERROR_MESSAGE, EXIT_CODE, EXIT_MESSAGE, EX
 	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
 	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
 	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
-	at org.junit.jupiter.engine.execution.Exec','1',NULL,NULL,'2023-01-18 18:08:28.0',NULL,'2023-01-18 18:08:28.0',9001,'application');
-insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (9001,'--logging.level.org.springframework.cloud.task=DEBUG');
-insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (9001,'--spring.datasource.password=test');
-insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (9001,'--spring.datasource.username=test');
-insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (9001,'--spring.datasource.url=jdbc:mariadb://localhost:55006/test');
-insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (9001,'--spring.datasource.driverClassName=org.mariadb.jdbc.Driver');
+	at org.junit.jupiter.engine.execution.Exec','1',NULL,NULL,'2023-02-15 17:03:44.0',NULL,'2023-02-15 17:03:44.0',1,'application');
+insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--logging.level.org.springframework.cloud.task=DEBUG');
+insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--spring.datasource.password=test');
+insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--spring.datasource.username=test');
+insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--spring.datasource.url=jdbc:mariadb://localhost:62759/test');
+insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--spring.datasource.driverClassName=org.mariadb.jdbc.Driver');
 
 
-truncate table BATCH_JOB_SEQ;
-INSERT INTO BATCH_JOB_SEQ (ID, UNIQUE_KEY) VALUES(9001, 0);
-truncate table BATCH_JOB_EXECUTION_SEQ;
-INSERT INTO BATCH_JOB_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(9001, 0);
-truncate table BATCH_STEP_EXECUTION_SEQ;
-INSERT INTO BATCH_STEP_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(9001, 0);
-truncate table TASK_SEQ
-;INSERT INTO TASK_SEQ (ID, UNIQUE_KEY) VALUES(9001, 0);
+truncate table V4_JOB_SEQ;
+INSERT INTO V4_JOB_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
+truncate table V4_JOB_EXECUTION_SEQ;
+INSERT INTO V4_JOB_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
+truncate table V4_STEP_EXECUTION_SEQ;
+INSERT INTO V4_STEP_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
+truncate table V4_SEQ
+;INSERT INTO V4_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);

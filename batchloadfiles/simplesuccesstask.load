@@ -1,16 +1,16 @@
-insert into TASK_EXECUTION (END_TIME, ERROR_MESSAGE, EXIT_CODE, EXIT_MESSAGE, EXTERNAL_EXECUTION_ID, LAST_UPDATED, PARENT_EXECUTION_ID, START_TIME, TASK_EXECUTION_ID, TASK_NAME)values ('2023-01-18 18:09:03.0',NULL,'0',NULL,NULL,'2023-01-18 18:09:03.0',NULL,'2023-01-18 18:09:03.0',9001,'application');
-insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (9001,'--logging.level.org.springframework.cloud.task=DEBUG');
-insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (9001,'--spring.datasource.password=test');
-insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (9001,'--spring.datasource.username=test');
-insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (9001,'--spring.datasource.url=jdbc:mariadb://localhost:55160/test');
-insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (9001,'--spring.datasource.driverClassName=org.mariadb.jdbc.Driver');
+insert into V4_EXECUTION (END_TIME, ERROR_MESSAGE, EXIT_CODE, EXIT_MESSAGE, EXTERNAL_EXECUTION_ID, LAST_UPDATED, PARENT_EXECUTION_ID, START_TIME, TASK_EXECUTION_ID, TASK_NAME)values ('2023-02-15 17:03:58.0',NULL,'0',NULL,NULL,'2023-02-15 17:03:58.0',NULL,'2023-02-15 17:03:58.0',1,'application');
+insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--logging.level.org.springframework.cloud.task=DEBUG');
+insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--spring.datasource.password=test');
+insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--spring.datasource.username=test');
+insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--spring.datasource.url=jdbc:mariadb://localhost:62829/test');
+insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--spring.datasource.driverClassName=org.mariadb.jdbc.Driver');
 
 
-truncate table BATCH_JOB_SEQ;
-INSERT INTO BATCH_JOB_SEQ (ID, UNIQUE_KEY) VALUES(9001, 0);
-truncate table BATCH_JOB_EXECUTION_SEQ;
-INSERT INTO BATCH_JOB_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(9001, 0);
-truncate table BATCH_STEP_EXECUTION_SEQ;
-INSERT INTO BATCH_STEP_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(9001, 0);
-truncate table TASK_SEQ
-;INSERT INTO TASK_SEQ (ID, UNIQUE_KEY) VALUES(9001, 0);
+truncate table V4_JOB_SEQ;
+INSERT INTO V4_JOB_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
+truncate table V4_JOB_EXECUTION_SEQ;
+INSERT INTO V4_JOB_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
+truncate table V4_STEP_EXECUTION_SEQ;
+INSERT INTO V4_STEP_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
+truncate table V4_SEQ
+;INSERT INTO V4_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
