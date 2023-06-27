@@ -1,5 +1,5 @@
-insert into V4_JOB_INSTANCE (JOB_INSTANCE_ID, JOB_KEY, JOB_NAME, VERSION) values (1,'d41d8cd98f00b204e9800998ecf8427e','jobmultistepexitcode','0');
-insert into V4_JOB_EXECUTION (CREATE_TIME, END_TIME, EXIT_CODE, EXIT_MESSAGE, JOB_CONFIGURATION_LOCATION, JOB_EXECUTION_ID, JOB_INSTANCE_ID, LAST_UPDATED, START_TIME, STATUS, VERSION) values ('2023-02-15 17:03:36.483','2023-02-15 17:03:36.624','FAILED','java.lang.IllegalStateException: WHOOPS
+insert into BATCH_JOB_INSTANCE (JOB_INSTANCE_ID, JOB_KEY, JOB_NAME, VERSION) values (518,'d41d8cd98f00b204e9800998ecf8427e','jobmultistepexitcode','0');
+insert into BATCH_JOB_EXECUTION (CREATE_TIME, END_TIME, EXIT_CODE, EXIT_MESSAGE, JOB_CONFIGURATION_LOCATION, JOB_EXECUTION_ID, JOB_INSTANCE_ID, LAST_UPDATED, START_TIME, STATUS, VERSION) values ('2023-06-27 14:20:35.822','2023-06-27 14:20:35.924','FAILED','java.lang.IllegalStateException: WHOOPS
 	at io.spring.batchschema.singlejobwithexitcode.TestSingleJobMultiStepExitCodeConfiguration$2.execute(TestSingleJobMultiStepExitCodeConfiguration.java:45)
 	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:407)
 	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:331)
@@ -24,9 +24,9 @@ insert into V4_JOB_EXECUTION (CREATE_TIME, END_TIME, EXIT_CODE, EXIT_MESSAGE, JO
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.pr',NULL,1,1,'2023-02-15 17:03:36.625','2023-02-15 17:03:36.5','FAILED','2');
-insert into V4_STEP_EXECUTION (COMMIT_COUNT, END_TIME, EXIT_CODE, EXIT_MESSAGE, FILTER_COUNT, JOB_EXECUTION_ID, LAST_UPDATED, PROCESS_SKIP_COUNT, READ_COUNT, READ_SKIP_COUNT, ROLLBACK_COUNT, START_TIME, STATUS, STEP_EXECUTION_ID, STEP_NAME, VERSION, WRITE_COUNT, WRITE_SKIP_COUNT) values (1,'2023-02-15 17:03:36.567','COMPLETED','',0,1,'2023-02-15 17:03:36.568',0,0,0,0,'2023-02-15 17:03:36.545','COMPLETED',1,'job1step1','3',0,0);
-insert into V4_STEP_EXECUTION (COMMIT_COUNT, END_TIME, EXIT_CODE, EXIT_MESSAGE, FILTER_COUNT, JOB_EXECUTION_ID, LAST_UPDATED, PROCESS_SKIP_COUNT, READ_COUNT, READ_SKIP_COUNT, ROLLBACK_COUNT, START_TIME, STATUS, STEP_EXECUTION_ID, STEP_NAME, VERSION, WRITE_COUNT, WRITE_SKIP_COUNT) values (0,'2023-02-15 17:03:36.615','FAILED','java.lang.IllegalStateException: WHOOPS
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.pr',NULL,518,518,'2023-06-27 14:20:35.925','2023-06-27 14:20:35.839','FAILED','2');
+insert into BATCH_STEP_EXECUTION (COMMIT_COUNT, END_TIME, EXIT_CODE, EXIT_MESSAGE, FILTER_COUNT, JOB_EXECUTION_ID, LAST_UPDATED, PROCESS_SKIP_COUNT, READ_COUNT, READ_SKIP_COUNT, ROLLBACK_COUNT, START_TIME, STATUS, STEP_EXECUTION_ID, STEP_NAME, VERSION, WRITE_COUNT, WRITE_SKIP_COUNT) values (1,'2023-06-27 14:20:35.885','COMPLETED','',0,518,'2023-06-27 14:20:35.886',0,0,0,0,'2023-06-27 14:20:35.868','COMPLETED',518,'job1step1','3',0,0);
+insert into BATCH_STEP_EXECUTION (COMMIT_COUNT, END_TIME, EXIT_CODE, EXIT_MESSAGE, FILTER_COUNT, JOB_EXECUTION_ID, LAST_UPDATED, PROCESS_SKIP_COUNT, READ_COUNT, READ_SKIP_COUNT, ROLLBACK_COUNT, START_TIME, STATUS, STEP_EXECUTION_ID, STEP_NAME, VERSION, WRITE_COUNT, WRITE_SKIP_COUNT) values (0,'2023-06-27 14:20:35.913','FAILED','java.lang.IllegalStateException: WHOOPS
 	at io.spring.batchschema.singlejobwithexitcode.TestSingleJobMultiStepExitCodeConfiguration$2.execute(TestSingleJobMultiStepExitCodeConfiguration.java:45)
 	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:407)
 	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:331)
@@ -51,11 +51,11 @@ insert into V4_STEP_EXECUTION (COMMIT_COUNT, END_TIME, EXIT_CODE, EXIT_MESSAGE, 
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.pr',0,1,'2023-02-15 17:03:36.616',0,0,0,1,'2023-02-15 17:03:36.598','FAILED',2,'job1step2','2',0,0);
-insert into V4_JOB_EXECUTION_CONTEXT (JOB_EXECUTION_ID, SERIALIZED_CONTEXT, SHORT_CONTEXT)values (1,NULL,'{"@class":"java.util.HashMap"}');
-insert into V4_STEP_EXECUTION_CONTEXT (SERIALIZED_CONTEXT, SHORT_CONTEXT, STEP_EXECUTION_ID) values (NULL,'{"@class":"java.util.HashMap","batch.taskletType":"io.spring.batchschema.singlejobwithexitcode.TestSingleJobMultiStepExitCodeConfiguration$1","batch.stepType":"org.springframework.batch.core.step.tasklet.TaskletStep"}',1);
-insert into V4_STEP_EXECUTION_CONTEXT (SERIALIZED_CONTEXT, SHORT_CONTEXT, STEP_EXECUTION_ID) values (NULL,'{"@class":"java.util.HashMap","batch.taskletType":"io.spring.batchschema.singlejobwithexitcode.TestSingleJobMultiStepExitCodeConfiguration$2","batch.stepType":"org.springframework.batch.core.step.tasklet.TaskletStep"}',2);
-insert into V4_EXECUTION (END_TIME, ERROR_MESSAGE, EXIT_CODE, EXIT_MESSAGE, EXTERNAL_EXECUTION_ID, LAST_UPDATED, PARENT_EXECUTION_ID, START_TIME, TASK_EXECUTION_ID, TASK_NAME)values ('2023-02-15 17:03:36.0','java.lang.IllegalStateException: Failed to execute ApplicationRunner
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.pr',0,518,'2023-06-27 14:20:35.918',0,0,0,1,'2023-06-27 14:20:35.901','FAILED',519,'job1step2','2',0,0);
+insert into BATCH_JOB_EXECUTION_CONTEXT (JOB_EXECUTION_ID, SERIALIZED_CONTEXT, SHORT_CONTEXT)values (518,NULL,'{"@class":"java.util.HashMap"}');
+insert into BATCH_STEP_EXECUTION_CONTEXT (SERIALIZED_CONTEXT, SHORT_CONTEXT, STEP_EXECUTION_ID) values (NULL,'{"@class":"java.util.HashMap","batch.taskletType":"io.spring.batchschema.singlejobwithexitcode.TestSingleJobMultiStepExitCodeConfiguration$1","batch.stepType":"org.springframework.batch.core.step.tasklet.TaskletStep"}',518);
+insert into BATCH_STEP_EXECUTION_CONTEXT (SERIALIZED_CONTEXT, SHORT_CONTEXT, STEP_EXECUTION_ID) values (NULL,'{"@class":"java.util.HashMap","batch.taskletType":"io.spring.batchschema.singlejobwithexitcode.TestSingleJobMultiStepExitCodeConfiguration$2","batch.stepType":"org.springframework.batch.core.step.tasklet.TaskletStep"}',519);
+insert into TASK_EXECUTION (END_TIME, ERROR_MESSAGE, EXIT_CODE, EXIT_MESSAGE, EXTERNAL_EXECUTION_ID, LAST_UPDATED, PARENT_EXECUTION_ID, START_TIME, TASK_EXECUTION_ID, TASK_NAME)values ('2023-06-27 14:20:35.0','java.lang.IllegalStateException: Failed to execute ApplicationRunner
 	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:762)
 	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:749)
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
@@ -80,21 +80,21 @@ insert into V4_EXECUTION (END_TIME, ERROR_MESSAGE, EXIT_CODE, EXIT_MESSAGE, EXTE
 	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
 	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
 	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
-	at org.junit.jupiter.','1',NULL,NULL,'2023-02-15 17:03:36.0',NULL,'2023-02-15 17:03:36.0',1,'application');
-insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--logging.level.org.springframework.cloud.task=DEBUG');
-insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--spring.datasource.password=test');
-insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--spring.datasource.username=test');
-insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--spring.datasource.url=jdbc:mariadb://localhost:62719/test');
-insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--spring.datasource.driverClassName=org.mariadb.jdbc.Driver');
-insert into V4_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (1,'--spring.cloud.task.batch.fail-on-job-failure=true');
-insert into V4_TASK_BATCH (TASK_EXECUTION_ID, JOB_EXECUTION_ID) values (1,1);
+	at org.junit.jupiter.','1',NULL,NULL,'2023-06-27 14:20:35.0',NULL,'2023-06-27 14:20:35.0',518,'application');
+insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (518,'--logging.level.org.springframework.cloud.task=DEBUG');
+insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (518,'--spring.datasource.password=test');
+insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (518,'--spring.datasource.username=test');
+insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (518,'--spring.datasource.url=jdbc:mariadb://localhost:63076/test');
+insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (518,'--spring.datasource.driverClassName=org.mariadb.jdbc.Driver');
+insert into TASK_EXECUTION_PARAMS (TASK_EXECUTION_ID, TASK_PARAM) values (518,'--spring.cloud.task.batch.fail-on-job-failure=true');
+insert into TASK_TASK_BATCH (TASK_EXECUTION_ID, JOB_EXECUTION_ID) values (518,518);
 
 
-truncate table V4_JOB_SEQ;
-INSERT INTO V4_JOB_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
-truncate table V4_JOB_EXECUTION_SEQ;
-INSERT INTO V4_JOB_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
-truncate table V4_STEP_EXECUTION_SEQ;
-INSERT INTO V4_STEP_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
-truncate table V4_SEQ
-;INSERT INTO V4_SEQ (ID, UNIQUE_KEY) VALUES(1, 0);
+truncate table BATCH_JOB_SEQ;
+INSERT INTO BATCH_JOB_SEQ (ID, UNIQUE_KEY) VALUES(518, 0);
+truncate table BATCH_JOB_EXECUTION_SEQ;
+INSERT INTO BATCH_JOB_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(518, 0);
+truncate table BATCH_STEP_EXECUTION_SEQ;
+INSERT INTO BATCH_STEP_EXECUTION_SEQ (ID, UNIQUE_KEY) VALUES(518, 0);
+truncate table TASK_SEQ
+;INSERT INTO TASK_SEQ (ID, UNIQUE_KEY) VALUES(518, 0);

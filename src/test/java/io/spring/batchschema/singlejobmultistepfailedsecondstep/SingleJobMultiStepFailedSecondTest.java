@@ -3,7 +3,7 @@ package io.spring.batchschema.singlejobmultistepfailedsecondstep;
 import io.spring.batchschema.AbstractBatchExport;
 import org.junit.jupiter.api.Test;
 
-public class SingleJobMultiStepTest extends AbstractBatchExport {
+public class SingleJobMultiStepFailedSecondTest extends AbstractBatchExport {
 
     /**
      * Given an empty database
